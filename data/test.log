@@ -1,0 +1,15 @@
+/*C5*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C6*/SET SCHEMA PUBLIC
+drop table if exists Rdv CASCADE 
+drop table if exists User CASCADE 
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table Rdv (idR bigint not null, date timestamp, heure time, eleve_idU bigint, prof_idU bigint, primary key (idR))
+create table User (DTYPE varchar(31) not null, idU bigint not null, matricule integer not null, nom varchar(255), prenom varchar(255), grade varchar(255), sujet varchar(255), primary key (idU))
+alter table Rdv add constraint FKixoj1kp84fu3dw5ewdou7qp7b foreign key (eleve_idU) references User
+alter table Rdv add constraint FKpcngxr3xx67cytn3diwyyepxv foreign key (prof_idU) references User
+INSERT INTO USER VALUES('Prof',1,0,NULL,NULL,NULL,'TAA')
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 2
+COMMIT
+DISCONNECT
