@@ -1,4 +1,4 @@
-package jpa.Entities;
+package jpa.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;

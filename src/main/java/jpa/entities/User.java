@@ -1,9 +1,6 @@
-package jpa.Entities;
+package jpa.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
+import javax.persistence.*;
 
 @Entity
 @Inheritance
@@ -23,8 +20,9 @@ public class User {
         this.matricule = matricule;
     }
 
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getIdU() {
         return idU;
     }

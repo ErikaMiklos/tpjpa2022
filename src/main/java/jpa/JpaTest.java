@@ -1,6 +1,10 @@
 package jpa;
 
-import jpa.Entities.Prof;
+import jpa.entities.Prof;
+import jpa.repositories.EleveDao;
+import jpa.repositories.IEleveDao;
+import jpa.repositories.IProfDao;
+import jpa.repositories.ProfDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -14,13 +18,18 @@ public class JpaTest {
 
 		EntityManager manager = EntityManagerHelper.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
+
 		tx.begin();
 
-
+		IProfDao profDao = new ProfDao();
+		IEleveDao eleveDao = new EleveDao();
 		try {
-			Prof prof1 = new Prof();
-			prof1.setSujet("TAA");
-			manager.persist(prof1);
+			profDao.createProfs();
+			profDao.listProfs();
+			profDao.listProfsBySujet("TAA");
+
+			eleveDao.createEleves();
+			eleveDao.listEleves();
 
 		} catch (Exception e) {
 			e.printStackTrace();

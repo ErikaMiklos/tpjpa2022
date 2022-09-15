@@ -1,4 +1,4 @@
-package jpa.Entities;
+package jpa.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -7,22 +7,22 @@ import java.util.List;
 @Entity
 public class Eleve extends User {
 
-    private String grade;
+    private double grade;
     private List<Rdv> rdvs = new ArrayList<Rdv>();
     public Eleve() {
     }
 
-    public Eleve(String grade) {
+    public Eleve(double grade) {
 
         this.grade = grade;
     }
 
 
-    public String getGrade() {
+    public double getGrade() {
         return grade;
     }
 
-    public void setGrade(String grade) {
+    public void setGrade(double grade) {
         this.grade = grade;
     }
 

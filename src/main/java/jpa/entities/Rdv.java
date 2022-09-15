@@ -1,17 +1,16 @@
-package jpa.Entities;
+package jpa.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import java.sql.Time;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 public class Rdv {
+
     private long idR;
+
     private Date date;
-    private Time heure;
+
+    private Date heure;
 
     private Prof prof;
     private Eleve eleve;
@@ -19,7 +18,7 @@ public class Rdv {
     public Rdv() {
     }
 
-    public Rdv(long idR, Date date, Time heure, Prof prof, Eleve eleve) {
+    public Rdv(long idR, Date date, Date heure, Prof prof, Eleve eleve) {
         this.idR = idR;
         this.date = date;
         this.heure = heure;
@@ -28,7 +27,7 @@ public class Rdv {
     }
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public long getIdR() {
         return idR;
     }
@@ -37,6 +36,7 @@ public class Rdv {
         this.idR = idR;
     }
 
+    @Temporal(TemporalType.DATE)
     public Date getDate() {
         return date;
     }
@@ -45,11 +45,12 @@ public class Rdv {
         this.date = date;
     }
 
-    public Time getHeure() {
+    @Temporal(TemporalType.TIME)
+    public Date getHeure() {
         return heure;
     }
 
-    public void setHeure(Time heure) {
+    public void setHeure(Date heure) {
         this.heure = heure;
     }
 
