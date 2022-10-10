@@ -2,14 +2,8 @@ package jpa.repositories;
 
 import jpa.EntityManagerHelper;
 import jpa.entities.Prof;
-import jpa.entities.User;
-import org.jboss.logging.Param;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import java.util.Date;
 import java.util.List;
 
 public class ProfDao implements IProfDao{
@@ -41,12 +35,13 @@ public class ProfDao implements IProfDao{
         }
     }
 
-    public void listProfs() {
+    public List<Prof> listProfs() {
         List<Prof> resultList = manager.createQuery("Select p From Prof p", Prof.class).getResultList();
         System.out.println("num of profs:" + resultList.size());
         for (Prof next : resultList) {
             System.out.println("next prof: " + next);
         }
+        return resultList;
     }
 
     public void listProfsBySujet(String s) {
